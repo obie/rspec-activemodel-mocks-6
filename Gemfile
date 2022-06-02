@@ -7,7 +7,7 @@ gemspec
   if File.exist?(library_path) && !ENV['USE_GIT_REPOS']
     gem lib, :path => library_path
   else
-    gem lib, :git => "git://github.com/rspec/#{lib}.git"
+    gem lib, :github => "rspec/#{lib}"
   end
 end
 
@@ -19,7 +19,7 @@ group :documentation do
   gem 'github-markup', '1.0.0'
 end
 
-version = ENV.fetch('RAILS_VERSION', '6.0.0')
+version = ENV.fetch('RAILS_VERSION', '6.1.1')
 version_float = version.tr('-', '.').tr('~> ', '').to_f
 
 if version_float < 4
@@ -56,7 +56,7 @@ if RUBY_VERSION < '2.0.0' && !!(RbConfig::CONFIG['host_os'] =~ /cygwin|mswin|min
 elsif RUBY_VERSION < '1.9'
   gem 'ffi', '< 1.9.19' # ffi dropped Ruby 1.8 support in 1.9.19
 else
-  gem 'ffi', '~> 1.9.25'
+  gem 'ffi', '~> 1.15.5'
 end
 
 gem "i18n", '< 0.7.0' if RUBY_VERSION < '1.9.3'
